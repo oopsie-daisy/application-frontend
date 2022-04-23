@@ -1,0 +1,33 @@
+<mat-select [(ngModel)]="value"
+            [required]="required"
+            [disabled]="disabled"
+            [multiple]="multiple"
+            (opened)="onFocusIn()"
+            (closed)="onFocusOut()"
+            [compareWith]="compareFn"
+            class="primary-control">
+
+  <mat-option [disabled]="true" *ngIf="searchable">
+    <ngx-mat-select-search noEntriesFoundLabel="Rezultatų nerasta"
+                           placeholderLabel="Ieškoti..."
+                           [clearSearchInput]="false" ngModel (ngModelChange)="_searchChanged.next($event)"
+                           [preventHomeEndKeyPropagation]="true">
+      <fa-icon [icon]="['fas', 'times']" size="lg" transform="up-1 right-1" ngxMatSelectSearchClear></fa-icon>
+    </ngx-mat-select-search>
+  </mat-option>
+
+  <ng-container *ngIf="showEmptyValue && !multiple">
+    <mat-option [value]="undefined"></mat-option>
+  </ng-container>
+
+  <mat-option *ngFor="let option of _selectOptions" [value]="option.value">
+    <ng-container [ngTemplateOutlet]="option.templateRef" [ngTemplateOutletContext]="{item:option}"></ng-container>
+  </mat-option>
+
+  <mat-select-trigger>
+    <ng-container *ngFor="let template of selectedTemplates; let last = last">
+      <ng-container [ngTemplateOutlet]="template"></ng-container>
+      <span *ngIf="!last" class="pe-1">,</span>
+    </ng-container>
+  </mat-select-trigger>
+</mat-select>

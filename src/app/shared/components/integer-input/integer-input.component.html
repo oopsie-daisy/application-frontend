@@ -1,0 +1,10 @@
+<input [(ngModel)]="value"
+       [required]="required"
+       [disabled]="disabled"
+       [placeholder]="placeholder || ''"
+       type="text"
+       class="primary-control mat-input-element"
+       (focusin)="onFocusIn()"
+       (focusout)="onFocusOut()"
+       autonumeric
+       [options]="numericOptions">

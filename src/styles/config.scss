@@ -1,0 +1,50 @@
+// colors with hex values
+$black: #000;
+$white: #fff;
+$silver: #c8c8c8;
+$boulder: #7a7979;
+$dusty-gray: #999;
+$zircon: #fdfeff;
+$whisper: #f8f7fa;
+$gallery: #ebebeb;
+$blue-zodiac: #142749;
+$plump-purple: #673AB7;
+$my-sin: #ffb22a;
+$fire-bush: #e8a02d;
+$brandy: #dfc399;
+$fern: #62c077;
+$panache: #edf8f1;
+$persimmon: #ff5c59;
+$monza: #d60017;
+$dark-gray: #333333;
+$gray: #666666;
+$lime: #62C077;
+$wisp-pink: #fdedee;
+$dove-gray: #666;
+$alabaster: #f9f9f9;
+
+$fern-light: #e9f6ec;
+$error-light: #ffe1e0;
+$deco-light: #f7f9fd;
+
+// reassign color vars to semantic color scheme
+$text-color: $black;
+$elements-color: $white;
+$deco-color: $plump-purple;
+$dark-gray-text-color: $dark-gray;
+$gray-text-color: $gray;
+
+// font
+$primary-font: Poppins, sans-serif;
+
+// other elelemnts
+$primary-transition: .5s ease;
+$primary-radius: 20px;
+$border-color: $dusty-gray;
+$secondary-border-color: rgba($color: $black, $alpha: .1);
+$error: $monza;
+
+// media queries
+$mobile-max: 767px;
+$tablet-min: 768px;
+$tablet-max: 1279px;

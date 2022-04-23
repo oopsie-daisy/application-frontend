@@ -1,0 +1,22 @@
+<mat-date-range-input [rangePicker]="datepicker" [min]="min" [max]="max" [disabled]="disabled">
+  <input #startInput
+         [(ngModel)]="startMomentValue"
+         [placeholder]="startDatePlaceholder"
+         matStartDate
+         type="text"
+         class="primary-control mat-input-element"
+         (focusin)="onFocusIn()"
+         (focusout)="onFocusOut()">
+  <input #endInput
+         [(ngModel)]="endMomentValue"
+         [placeholder]="endDatePlaceholder"
+         matEndDate
+         type="text"
+         class="mat-input-element"
+         (focusin)="onFocusIn()"
+         (focusout)="onFocusOut()">
+</mat-date-range-input>
+<mat-date-range-picker #datepicker
+                       (opened)="onFocusIn()"
+                       (closed)="onFocusOut()">
+</mat-date-range-picker>

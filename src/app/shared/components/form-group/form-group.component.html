@@ -1,0 +1,10 @@
+<mat-form-field [appearance]="appearance" [hideRequiredMarker]="hideRequiredMarker">
+  <mat-label>
+    <ng-content select="mat-label"></ng-content>
+  </mat-label>
+  <span matPrefix><ng-content select="[matPrefix]"></ng-content></span>
+  <ng-content></ng-content>
+  <span matSuffix><ng-content select="[matSuffix]"></ng-content></span>
+<!--  <mat-error>{{error | async | translate:errorParams}}</mat-error>-->
+</mat-form-field>
+<ng-content select="mat-error"></ng-content>

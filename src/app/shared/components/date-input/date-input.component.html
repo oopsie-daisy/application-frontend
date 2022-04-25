@@ -1,0 +1,16 @@
+<input #input
+       [matDatepicker]="datepicker"
+       [(ngModel)]="momentValue"
+       [required]="required"
+       [disabled]="disabled"
+       [placeholder]="placeholder || ''"
+       type="text"
+       class="primary-control mat-input-element"
+       (focusin)="onFocusIn()"
+       (focusout)="onFocusOut()"
+       [min]="min"
+       [max]="max">
+<mat-datepicker #datepicker
+                (opened)="onFocusIn()"
+                (closed)="onFocusOut()">
+</mat-datepicker>

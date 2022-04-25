@@ -1,0 +1,9 @@
+<input [(ngModel)]="value"
+       [required]="required"
+       [disabled]="disabled"
+       [placeholder]="placeholder || ''"
+       [type]="type"
+       class="primary-control mat-input-element"
+       (focusin)="onFocusIn()"
+       (focusout)="onFocusOut()"
+       [maxLength]="max">

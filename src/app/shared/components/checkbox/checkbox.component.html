@@ -1,0 +1,13 @@
+<mat-checkbox
+  [(ngModel)]="value"
+  [required]="required"
+  [disabled]="disabled"
+  class="primary-control"
+  (focusin)="onFocusIn()"
+  (focusout)="onFocusOut()"
+  [class.d-block]="!inline"
+  [class.checkbox__without-form-group]="withoutFormGroup"
+  [class.checkbox__with-description]="hasDescription">
+  <ng-content></ng-content>
+</mat-checkbox>
+

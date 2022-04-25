@@ -1,0 +1,12 @@
+<button *ngIf="btnClass"
+        [type]="btnType"
+        [ngClass]="btnClass"
+        [class.active]="keyPressed"
+        (keydown.enter)="onKeyPress()"
+        (keyup.enter)="onKeyUp($event)"
+        (mousedown)="onKeyPress()"
+        (mouseup)="onKeyUp($event)"
+        (mouseleave)="onMouseLeave()"
+        [disabled]="disabled">
+  <ng-content></ng-content>
+</button>

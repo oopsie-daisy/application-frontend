@@ -1,0 +1,164 @@
+<div class="content">
+  <h1>Sistemos komponentų pavyzdžiai</h1>
+
+  <h2 class="pt-3">Bendrieji elementai</h2>
+  <div class="row py-3">
+    <div class="col"><h1>Antraštė 1</h1></div>
+    <div class="col"><h2>Antraštė 2</h2></div>
+    <div class="col"><h3>Antraštė 3</h3></div>
+  </div>
+
+  <div class="row py-3">
+    <div class="col"><a href appStopPropagation>Nuoroda</a></div>
+    <div class="col-8">
+      Išvedamas tekstas: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.
+    </div>
+  </div>
+
+  <div class="row py-3">
+    <div class="col">
+      <app-button btnClass="btn btn--primary">Pagrindinis mygtukas</app-button>
+    </div>
+    <div class="col">
+      <app-button btnClass="btn btn--secondary">Antrinis mygtukas</app-button>
+    </div>
+    <div class="col"></div>
+  </div>
+
+  <h2 class="pt-3">Įvestis</h2>
+  <form #form="ngForm" appInvalidFormScroll>
+    <div class="row">
+      <app-form-group class="col">
+        <mat-label>Teksto įvedimas</mat-label>
+        <app-text-input [(ngModel)]="text" name="text1"></app-text-input>
+      </app-form-group>
+      <app-form-group class="col">
+        <mat-label>Teksto įvedimas (privalomas)</mat-label>
+        <app-text-input [(ngModel)]="text" [required]="true" name="text2"></app-text-input>
+      </app-form-group>
+      <app-form-group class="col">
+        <mat-label>Teksto įvedimas (neredaguojamas)</mat-label>
+        <app-text-input [(ngModel)]="text" [disabled]="true" name="text3"></app-text-input>
+      </app-form-group>
+    </div>
+
+    <div class="row">
+
+      <app-form-group class="col-4">
+        <mat-label>Sveiko skaičiaus įvedimas</mat-label>
+        <app-integer-input [(ngModel)]="number" [allowNegative]="true" name="number2"></app-integer-input>
+      </app-form-group>
+    </div>
+
+    <div class="row">
+      <app-form-group class="col-4">
+        <mat-label>Datos įvedimas</mat-label>
+        <app-date-input #dateInput [(ngModel)]="date" name="date"></app-date-input>
+        <mat-datepicker-toggle matSuffix [for]="dateInput.datepicker"></mat-datepicker-toggle>
+      </app-form-group>
+
+      <app-form-group class="col-4">
+        <mat-label>Datos intervalo įvedimas (privalomas)</mat-label>
+        <app-date-range-input #dateRangeInput ngModel [(startDate)]="rangeStart" [(endDate)]="rangeEnd" name="dateRange" [required]="true"></app-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="dateRangeInput.datepicker"></mat-datepicker-toggle>
+      </app-form-group>
+    </div>
+
+    <div class="row">
+      <!--
+        app select params
+        showEmptyValue - whether or not a null value will be displayed (default true)
+        multiple - whether or not the select is for multiple values (default false)
+        searchable - whether or not a search field should be visible (default false)
+        search - mandatory with searchable option. Will output search text when search was performed. This is used to update [options] when search was done
+
+        provided options will be read only with any component marked with *appSelectOption="{VALUE}" directive
+      -->
+
+      <app-form-group class="col">
+        <mat-label>Išskleidžiamasis sąrašas (privalomas)</mat-label>
+        <app-select [(ngModel)]="selectValue" [required]="true" name="select1">
+          <span *appSelectOption="true">
+            <fa-icon [icon]="['far', 'check-circle']" size="lg"></fa-icon>
+            <span class="ps-2">Aktyvus</span>
+          </span>
+          <span *appSelectOption="false">
+            <fa-icon [icon]="['far', 'times-circle']" size="lg"></fa-icon>
+            <span class="ps-2">Neaktyvus</span>
+          </span>
+        </app-select>
+      </app-form-group>
+
+      <app-form-group class="col">
+        <mat-label>Išskleidžiamasis sąrašas (su paieška)</mat-label>
+        <app-select [(ngModel)]="selectValue" [searchable]="true" (search)="selectSearched($event)" name="select2">
+          <ng-container *ngFor="let option of searchSelectOptions$ | async"><span *appSelectOption="option.value">{{option.label}}</span></ng-container>
+        </app-select>
+      </app-form-group>
+
+      <app-form-group class="col">
+        <mat-label>Kelių pasirinkimų išskleidžiamasis sąrašas</mat-label>
+        <app-select [(ngModel)]="multiSelectValue" [multiple]="true" name="select3">
+          <ng-container *ngFor="let option of searchSelectOptions$ | async"><span *appSelectOption="option.value">{{option.label}}</span></ng-container>
+        </app-select>
+      </app-form-group>
+    </div>
+
+    <div class="row">
+      <app-form-group class="col-4">
+        <app-checkbox [(ngModel)]="check" name="checkbox1" appCheckboxRequiredValidator>Žymimasis laukelis</app-checkbox>
+      </app-form-group>
+
+      <!--
+        set `hasDescription` to true if some secondary text should be displayed
+        sets the checkbox tick to align on top instead of middle
+       -->
+      <app-form-group class="col-4">
+        <mat-label>Žymimųjų laukelių grupė (privalomas bent vienas)</mat-label>
+        <app-checkbox [(ngModel)]="check" name="checkbox2" [hasDescription]="true" appCheckboxRequiredValidator>
+          Žymimasis laukelis 2
+          <div class="text-muted">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non justo quis purus tincidunt dictum. Sed tincidunt lectus est, vitae lacinia massa feugiat vel.
+          </div>
+        </app-checkbox>
+        <app-checkbox [(ngModel)]="check2" name="checkbox3">Žymimasis laukelis 3</app-checkbox>
+      </app-form-group>
+    </div>
+
+    <div class="row">
+      <app-form-group class="col">
+        <mat-label>Pasirinkties akučių grupė (vertikali, privaloma)</mat-label>
+        <app-radio-group [(ngModel)]="radioValue" [required]="true" name="radio1">
+          <mat-radio-button [value]="'ONE'">Pasirinktis 1</mat-radio-button>
+          <mat-radio-button [value]="'TWO'">Pasirinktis 2</mat-radio-button>
+        </app-radio-group>
+      </app-form-group>
+
+      <app-form-group class="col">
+        <mat-label>Pasirinkties akučių grupė (vertikali, neredaguojama)</mat-label>
+        <app-radio-group [(ngModel)]="radioValue" [disabled]="true" name="radio2">
+          <mat-radio-button [value]="'ONE'">Pasirinktis 1</mat-radio-button>
+          <mat-radio-button [value]="'TWO'">Pasirinktis 2</mat-radio-button>
+        </app-radio-group>
+      </app-form-group>
+
+      <app-form-group class="col">
+        <mat-label>Pasirinkties akučių grupė (horizontali)</mat-label>
+        <app-radio-group [(ngModel)]="radioValue" [inline]="true" name="radio3">
+          <mat-radio-button [value]="'ONE'">Pasirinktis 1</mat-radio-button>
+          <mat-radio-button [value]="'TWO'">Pasirinktis 2</mat-radio-button>
+        </app-radio-group>
+      </app-form-group>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <app-button btnType="reset" btnClass="btn btn--secondary me-3">Išvalyti</app-button>
+      <app-button btnType="submit" btnClass="btn btn--primary">Saugoti</app-button>
+    </div>
+  </form>
+</div>

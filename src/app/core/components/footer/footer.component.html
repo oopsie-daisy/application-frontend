@@ -1,0 +1,90 @@
+<footer class="footer mt-5">
+  <div class="footer__body justify-content-between">
+    <div class="footer__col">
+      <h3>
+        <a class="site-logo" [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)">
+          <img src="assets/img/flower.png" [alt]="'Oopsie Daisy'">
+          <span>Oopsie Daisy</span>
+        </a>
+      </h3>
+      <nav>
+        <ul class="clearfix">
+          <li class="footer__items footer__text">
+            +370 6** *****
+          </li>
+          <li class="footer__icons">
+              <fa-icon [icon]="['fab', 'instagram']" size="lg"></fa-icon>
+              <fa-icon [icon]="['fab', 'whatsapp']" size="lg"></fa-icon>
+              <fa-icon [icon]="['fab', 'facebook']" size="lg"></fa-icon>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__col">
+      <h3>
+        Pagalba
+      </h3>
+      <nav>
+        <ul class="clearfix">
+          <li class="footer__items footer__text">
+            Kontaktai
+          </li>
+          <li class="footer__items footer__text">
+            Pristatymo informacija
+          </li>
+          <li class="footer__items footer__text">
+            Atsiskaitymo sąlygos
+          </li>
+          <li class="footer__items footer__text">
+            DUK
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__col">
+      <h3>
+        Apie mus
+      </h3>
+      <nav>
+        <ul class="clearfix">
+          <li class="footer__items footer__text">
+            Mūsų parduotuvės
+          </li>
+          <li class="footer__items footer__text">
+            Gėlių priežiūra
+          </li>
+          <li class="footer__items footer__text">
+            Paslaugų žemėlapis
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__col">
+      <h3>
+        Saugumas
+      </h3>
+      <nav>
+        <ul class="clearfix">
+          <li class="footer__items footer__text">
+            Privatumo politika
+          </li>
+          <li class="footer__items footer__text">
+            Pirkimo taisyklės
+          </li>
+          <li class="footer__items footer__text">
+            Slapukų nustatymai
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <nav class="footer__nav">
+    <ul class="clearfix">
+      <li class="footer__nav__items"><a href appStopPropagation class="footer__nav__links"></a></li>
+    </ul>
+  </nav>
+
+  <div class="footer__copy">© {{year}} Oopsie Daisy</div>
+
+</footer>

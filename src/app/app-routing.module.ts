@@ -1,12 +1,22 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ComponentExamplesComponent} from 'src/app/component-examples/component-examples/component-examples.component';
 import {UrlConstants} from 'src/app/utils/url-constants';
 
 const routes: Routes = [
   {
-    path: UrlConstants.COMPONENT_EXAMPLES, component: ComponentExamplesComponent,
+    path: UrlConstants.HOME,
+    loadChildren: () => import('src/app/lazy-modules/home/home.module').then(m => m.HomeModule)
+  },
+  {
+    path: UrlConstants.COMPONENT_EXAMPLES,
     loadChildren: () => import('src/app/component-examples/component-examples.module').then(m => m.ComponentExamplesModule)
+  },
+  {
+    path: UrlConstants.FLOWERS,
+    loadChildren: () => import('src/app/lazy-modules/flowers/flowers.module').then(m => m.FlowersModule)
+  },
+  {
+    path: '', redirectTo: UrlConstants.HOME, pathMatch: 'full'
   }
 ];
 

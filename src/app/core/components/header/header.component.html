@@ -1,0 +1,52 @@
+<header class="header" [class.header-with-links]="navLinks.length">
+  <ul class="clearfix">
+    <li class="nav_main__items">
+      <a [routerLink]="UrlConstants.buildUrl(UrlConstants.CITIES)" routerLinkActive="active" class="nav_main__links">
+        <fa-layers>
+          <fa-icon [icon]="['fas', 'location-dot']" size="lg" class="pe-4"></fa-icon>
+          <span>Miestas</span>
+        </fa-layers>
+      </a>
+    </li>
+  </ul>
+
+  <a class="d-flex align-items-center justify-content-center col site-logo" [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)">
+    <img src="assets/img/flower.png" [alt]="'Oopsie Daisy'">
+    <h1 class="text-uppercase pb-0">Oopsie Daisy</h1>
+  </a>
+
+<!--  <div class="d-flex align-items-center justify-content-center col">-->
+<!--    <a class="site_logo" [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)"><img src="assets/img/flower.png" class="logo" [alt]="'Oopsie Daisy'"></a>-->
+<!--    <h1 class="text-uppercase pb-0">Oopsie Daisy</h1>-->
+<!--  </div>-->
+
+  <nav class="nav_main external">
+    <ul class="clearfix">
+      <li class="nav_main__items">
+        <a [routerLink]="UrlConstants.buildUrl(UrlConstants.ACCOUNT)" routerLinkActive="active" class="nav_main__links">
+          <fa-icon [icon]="['fas', 'user']" size="lg"></fa-icon>
+        </a>
+      </li>
+      <li class="nav_main__items">
+        <a [routerLink]="UrlConstants.buildUrl(UrlConstants.SEARCH)" routerLinkActive="active" class="nav_main__links">
+          <fa-icon [icon]="['fas', 'search']" size="lg"></fa-icon>
+        </a>
+      </li>
+      <li class="nav_main__items">
+        <a [routerLink]="UrlConstants.buildUrl(UrlConstants.SHOPPING_CART)" routerLinkActive="active" class="nav_main__links">
+          <fa-icon [icon]="['fas', 'shopping-cart']" size="lg"></fa-icon>
+        </a>
+      </li>
+    </ul>
+    <div class="nav_sub" *ngIf="navLinks.length">
+      <ul class="clearfix">
+        <li class="nav_sub__items" *ngFor="let navLink of navLinks">
+          <a [routerLink]="navLink.url" class="nav_sub__links" routerLinkActive="active">
+            <fa-icon [icon]="navLink.iconClass" class="nav_sub__icon"></fa-icon>
+            <span>{{navLink.label}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,1 +1,26 @@
-<p>flowers-list works!</p>
+<div class="content">
+  <div class="breadcrumb clearfix">
+    <app-breadcrumb [first]="true"><a [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)" class="breadcrumb__links">Pradžia</a></app-breadcrumb>
+    <app-breadcrumb>Gėlės</app-breadcrumb>
+  </div>
+
+  <h1>Gėlės</h1>
+
+  <ul *ngIf="list" class="flowers">
+    <li *ngFor="let item of list" class="flowers__items">
+      <a class="flowers__images">
+        <img [src]="item.image" [alt]="'Paveikslėlis nerastas'">
+      </a>
+      <div class="flowers__text">
+        <div>
+          <h3 [title]="item.title" class="mb-2">{{item.title}}</h3>
+          <span class="label me-2 mb-2">Spalva: {{ColorNames[item.baseColor]}}</span>
+          <span class="label me-2 mb-2">Puokštė: {{item.bouquet ? "Taip" : "Ne"}}</span>
+        </div>
+        <div class="flowers__text__row pt-3">
+          <span class="flowers__text__price">{{item.price | currency}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

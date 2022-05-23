@@ -6,6 +6,9 @@ export class AppConstants {
   public static readonly DEFAULT_TIME_FORMAT = 'HH:mm';
   public static readonly LOCALE_DATE_FORMAT = 'LL';
 
+  // Misc
+  public static readonly CURRENCY_EUR_SIGN = '€';
+
   public static compareById(o1: any, o2: any): boolean {
     return o1?.id === o2?.id;
   }

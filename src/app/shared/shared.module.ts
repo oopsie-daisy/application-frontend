@@ -26,6 +26,9 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DateRangeInputComponent} from 'src/app/shared/components/date-range-input/date-range-input.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {MatTableModule} from '@angular/material/table';
+import {CurrencyPipe} from 'src/app/shared/pipes/currency.pipe';
+import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import {MatButtonModule} from "@angular/material/button";
     CheckboxComponent,
     RadioGroupComponent,
     DateInputComponent,
-    DateRangeInputComponent
+    DateRangeInputComponent,
+    CurrencyPipe,
+    BreadcrumbComponent
   ],
     imports: [
         NgbModule,
@@ -58,6 +63,7 @@ import {MatButtonModule} from "@angular/material/button";
         MatDatepickerModule,
         MatInputModule,
         MatButtonModule,
+        MatTableModule,
     ],
   exports: [
     NgbModule,
@@ -82,6 +88,9 @@ import {MatButtonModule} from "@angular/material/button";
     DateInputComponent,
     DateRangeInputComponent,
     MatSelectModule,
+    MatTableModule,
+    CurrencyPipe,
+    BreadcrumbComponent,
   ]
 })
 export class SharedModule {

@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 
 import {FlowersRoutingModule} from 'src/app/lazy-modules/flowers/flowers-routing.module';
 import {FlowersListComponent} from 'src/app/lazy-modules/flowers/components/flowers-list/flowers-list.component';
 import {FlowersViewComponent} from 'src/app/lazy-modules/flowers/components/flowers-view/flowers-view.component';
+import {SharedModule} from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -12,8 +12,8 @@ import {FlowersViewComponent} from 'src/app/lazy-modules/flowers/components/flow
     FlowersViewComponent
   ],
   imports: [
-    CommonModule,
-    FlowersRoutingModule
+    FlowersRoutingModule,
+    SharedModule
   ]
 })
 export class FlowersModule { }

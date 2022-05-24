@@ -33,6 +33,28 @@ body {
   margin: 0 auto;
 }
 
+.breadcrumb {
+  margin: 0 0 16px 0;
+  &__items {
+    font: 12px/1.2 $primary-font;
+    margin: 0 0 10px 0;
+  }
+  &__links {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &--light {
+    color: $elements-color;
+    margin: 0 0 10px 0;
+  }
+  &--light &__links {
+    color: $elements-color;
+  }
+}
+
 .flex-body {
   display: flex;
   flex-direction: column;

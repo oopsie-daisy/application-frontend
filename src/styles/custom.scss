@@ -82,3 +82,52 @@
     margin-right: 6px;
   }
 }
+
+.flower_view {
+  .aside {
+    width: 32.395%;
+    background: $elements-color;
+    box-shadow: 0 12px 24px rgba(58, 90, 169, .1);
+    border-radius: 8px;
+    margin: 0 0 30px 0;
+    float: right;
+    &__body {
+      font: 14px/1.64 $primary-font;
+      border-top: 1px solid $secondary-border-color;
+      padding: 16px 24px 10px 24px;
+      &:first-child {
+        border-top: none;
+      }
+      h4 {
+        padding: 0 0 1px 0;
+      }
+      p {
+        color: $gray-text-color;
+        padding: 0 0 8px 0;
+      }
+      .error {
+        color: $error;
+      }
+    }
+    &__body {
+      &--bottom {
+        .btn {
+          margin: 0 0 10px 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+
+    .block {
+      width: 100%;
+    }
+    .aside {
+      width: 100%;
+      box-shadow: 0 0 24px 12px rgba(58, 90, 169, .1);
+    }
+  }
+}

@@ -29,6 +29,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from '@angular/material/table';
 import {CurrencyPipe} from 'src/app/shared/pipes/currency.pipe';
 import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcrumb.component';
+import {MatInputCounterModule} from '@angular-material-extensions/input-counter';
+import {AngularCounterModule} from 'angular-input-counter';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcru
     DateInputComponent,
     DateRangeInputComponent,
     CurrencyPipe,
-    BreadcrumbComponent
+    BreadcrumbComponent,
   ],
     imports: [
         NgbModule,
@@ -64,6 +66,8 @@ import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcru
         MatInputModule,
         MatButtonModule,
         MatTableModule,
+        MatInputCounterModule,
+        AngularCounterModule,
     ],
   exports: [
     NgbModule,
@@ -91,6 +95,8 @@ import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcru
     MatTableModule,
     CurrencyPipe,
     BreadcrumbComponent,
+    MatInputCounterModule,
+    AngularCounterModule,
   ]
 })
 export class SharedModule {

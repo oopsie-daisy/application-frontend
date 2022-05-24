@@ -8,14 +8,14 @@
 
   <ul *ngIf="list" class="flowers">
     <li *ngFor="let item of list" class="flowers__items">
-      <a class="flowers__images">
+      <a [routerLink]="UrlConstants.buildUrl(UrlConstants.FLOWERS, item.uuid)" class="flowers__images">
         <img [src]="item.image" [alt]="'Paveikslėlis nerastas'">
       </a>
       <div class="flowers__text">
         <div>
           <h3 [title]="item.title" class="mb-2">{{item.title}}</h3>
           <span class="label me-2 mb-2">Spalva: {{ColorNames[item.baseColor]}}</span>
-          <span class="label me-2 mb-2">Puokštė: {{item.bouquet ? "Taip" : "Ne"}}</span>
+          <span class="label me-2 mb-2">Puokštė: {{item.bouquet ? "taip" : "ne"}}</span>
         </div>
         <div class="flowers__text__row pt-3">
           <span class="flowers__text__price">{{item.price | currency}}</span>

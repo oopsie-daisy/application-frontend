@@ -6,6 +6,12 @@ export class AppConstants {
   public static readonly DEFAULT_TIME_FORMAT = 'HH:mm';
   public static readonly LOCALE_DATE_FORMAT = 'LL';
 
+  // Minimum three symbol search
+  public static readonly MINIMUM_SEARCH_SYMBOLS = 3;
+
+  // Maximum price for one flower item
+  public static readonly MAX_FLOWER_PRICE = 300;
+
   // Misc
   public static readonly CURRENCY_EUR_SIGN = '€';
 

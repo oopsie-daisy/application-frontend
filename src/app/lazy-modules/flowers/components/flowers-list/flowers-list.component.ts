@@ -23,6 +23,10 @@ export class FlowersListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filterFlowers();
+  }
+
+  filterFlowers(): void {
     this.flowerService.search(this.flowerFilter).subscribe(value => {
       this.list = value;
       this.list.forEach(flower => {

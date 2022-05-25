@@ -13,7 +13,8 @@ import {
   faSearch,
   faShoppingCart,
   faLocationDot,
-  faChevronRight
+  faChevronRight,
+  faCaretDown
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
@@ -47,7 +48,8 @@ export class FaUtils {
       faInstagram,
       faWhatsapp,
       faFacebook,
-      faChevronRight
+      faChevronRight,
+      faCaretDown
     ];
   }
 }

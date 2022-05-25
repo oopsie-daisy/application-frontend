@@ -6,6 +6,10 @@
 
   <h1>Gėlės</h1>
 
+  <div class="position-relative">
+    <app-flowers-search [(query)]="flowerFilter" (search)="filterFlowers()"></app-flowers-search>
+  </div>
+
   <ul *ngIf="list" class="flowers">
     <li *ngFor="let item of list" class="flowers__items">
       <a [routerLink]="UrlConstants.buildUrl(UrlConstants.FLOWERS, item.uuid)" class="flowers__images">

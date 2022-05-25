@@ -131,3 +131,8 @@
     }
   }
 }
+
+// Negative left and right margins for block content
+.block-nm-x {
+  margin: 0 -32px 0 -32px;
+}

@@ -650,3 +650,115 @@ header.header-with-links {
     filter: blur(15px);
   }
 }
+
+.site {
+  &_search {
+    margin: 0 0 32px 0;
+    gap: 15px 25px;
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    &__btn {
+      background: none;
+      padding: 0 15px;
+      align-items: center;
+      justify-content: center;
+      display: inline-flex;
+      fa-icon {
+        color: rgba(0, 0, 0, .54);
+        font-size: 18px;
+      }
+    }
+    &__clear-btn {
+      background: none;
+      position: absolute;
+      top: 7px;
+      left: -20px;
+      fa-icon {
+        color: rgba(0, 0, 0, .54);
+      }
+    }
+    &__wrap {
+      gap: 10px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+    &__no-wrap {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  }
+  &_toggle {
+    color: $deco-color;
+    text-decoration: none;
+    padding: 0 18px 0 0;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.rotate svg {
+  transition: transform $primary-transition;
+}
+
+.rotate-180 svg {
+  transform: rotate(180deg);
+}
+
+.range-width {
+  max-width: 70px !important;
+}
+
+.custom-slider .ngx-slider {
+  margin-top: 29px;
+
+  .ngx-slider-bar {
+    background: $gallery;
+    height: 4px;
+  }
+
+  .ngx-slider-selection {
+    background: $gargoyle-gas;
+  }
+
+  .ngx-slider-pointer {
+    width: 14px;
+    height: 14px;
+    top: -6px;
+    background-color: white;
+    border-radius: 14px;
+    border: 2px solid $gargoyle-gas;
+  }
+
+  .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .ngx-slider-bubble {
+    bottom: 30px;
+  }
+
+  .ngx-slider-limit {
+    font-weight: bold;
+    color: $gargoyle-gas;
+  }
+
+  .ngx-slider-tick {
+    display: none;
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: $gargoyle-gas;
+    top: -1px;
+  }
+
+  .ngx-slider-tick.ngx-slider-selected {
+    background: $gargoyle-gas;
+  }
+}

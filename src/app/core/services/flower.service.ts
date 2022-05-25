@@ -17,4 +17,8 @@ export class FlowerService {
     const params = new HttpParams({fromObject: JSON.parse(JSON.stringify(search))})
     return this.http.get<FlowerListView[]>(ApiConstants.FLOWERS, {params});
   }
+
+  public findByUuid(uuid: string): Observable<FlowerListView> {
+    return this.http.get<FlowerListView>(ApiConstants.FLOWERS + '/' + uuid);
+  }
 }

@@ -5,6 +5,6 @@
   <span matPrefix><ng-content select="[matPrefix]"></ng-content></span>
   <ng-content></ng-content>
   <span matSuffix><ng-content select="[matSuffix]"></ng-content></span>
-<!--  <mat-error>{{error | async | translate:errorParams}}</mat-error>-->
+  <mat-error>{{error | async}}</mat-error>
 </mat-form-field>
 <ng-content select="mat-error"></ng-content>

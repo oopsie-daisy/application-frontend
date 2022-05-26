@@ -1,0 +1,65 @@
+<form #searchForm="ngForm" class="site_search" (ngSubmit)="!searchForm.invalid && submitForm()">
+  <app-form-group class="col-md-6 col-12">
+    <mat-label>Paieška</mat-label>
+    <app-button btnType="submit" btnClass="site_search__btn" matPrefix>
+      <fa-icon [icon]="['fas', 'search']"></fa-icon>
+    </app-button>
+    <app-text-input [(ngModel)]="query.title" [appMinSearchSymbolsValidator]="AppConstants.MINIMUM_SEARCH_SYMBOLS" name="flowerNameInSearch"></app-text-input>
+  </app-form-group>
+  <div (click)="filterOpen = !filterOpen" class="site_toggle pointer">
+    <span>{{filterOpen ? 'Suskleisti filtrą' : 'Išskleisti filtrą'}}</span>
+    <fa-icon [icon]="['fas', 'caret-down']" class="ms-2 rotate" [class.rotate-180]="filterOpen"></fa-icon>
+  </div>
+</form>
+
+<form #filterForm="ngForm" class="block block--toggle clearfix" appInvalidFormScroll [class.open]="filterOpen" (ngSubmit)="!filterForm.invalid && submitForm()">
+  <div class="row align-items-center">
+    <app-form-group class="col-lg-4 col-md-4 col-xs-12">
+      <mat-label>Gėlės pavadinimas</mat-label>
+      <app-text-input [(ngModel)]="query.title" [appMinSearchSymbolsValidator]="AppConstants.MINIMUM_SEARCH_SYMBOLS" name="flowerNameInFilter"></app-text-input>
+    </app-form-group>
+    <app-form-group class="col-lg-4 col-md-4 col-xs-12">
+      <mat-label>Spalvos</mat-label>
+      <app-select [(ngModel)]="query.color" name="colors">
+        <ng-container *ngFor="let option of FlowerColors | keyvalue">
+          <span *appSelectOption="option.key">{{FlowerColorTranslations[option.key].toString() | uppercaseFirstLetter}}</span>
+        </ng-container>
+      </app-select>
+    </app-form-group>
+    <div class="col-lg-4 col-md-4 col-xs-12">
+      <div class="d-flex justify-content-center site_search__wrap">
+        <app-button [btnClass]="'ms-2 text-center btn btn--big ' + (query.bouquet === true ? 'btn--primary' : 'btn--secondary')"
+                    (btnClick)="query.bouquet = true">
+          Puokštė
+        </app-button>
+        <app-button [btnClass]="'ms-2 text-center btn btn--big ' + (query.bouquet === false ? 'btn--primary' : 'btn--secondary')"
+                    (btnClick)="query.bouquet = false">
+          Pavienės gėlės
+        </app-button>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-3 pb-3 align-items-sm-center">
+    <div class="col-lg-5 col-md-6 col-xs-12" *ngIf="sliderOptions">
+      <h4 class="text-md-start text-center pb-1">Kaina, {{AppConstants.CURRENCY_EUR_SIGN}}</h4>
+      <div class="d-flex">
+        <app-form-group class="range-width me-2">
+          <app-integer-input [ngModel]="query.priceFrom" (ngModelChange)="changePriceFrom($event)"  [max]="sliderOptions.ceil.toString()" [min]="sliderOptions.floor.toString()" name="priceFrom"></app-integer-input>
+        </app-form-group>
+        <div class="w-100 custom-slider pb-5">
+          <ngx-slider [value]="query.priceFrom" [highValue]="query.priceTo" (userChange)="changePriceFrom($event.value); changePriceTo($event.highValue)" [options]="sliderOptions"></ngx-slider>
+        </div>
+        <app-form-group class="range-width ms-2">
+          <app-integer-input [ngModel]="query.priceTo" (ngModelChange)="changePriceTo($event)" [max]="sliderOptions.ceil.toString()" [min]="sliderOptions.floor.toString()" name="priceTo"></app-integer-input>
+        </app-form-group>
+      </div>
+    </div>
+  </div>
+  <hr class="block-nm-x mt-3"/>
+  <div class="d-flex justify-content-start pt-4 btn-group-mobile">
+    <div class="reverse-mobile">
+      <app-button btnClass="btn btn--secondary btn--big me-3" (btnClick)="resetForm()">Išvalyti filtrą</app-button>
+      <app-button btnType="submit" btnClass="btn btn--primary btn--big">Filtruoti</app-button>
+    </div>
+  </div>
+</form>

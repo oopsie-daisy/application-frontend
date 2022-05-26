@@ -31,6 +31,9 @@ import {CurrencyPipe} from 'src/app/shared/pipes/currency.pipe';
 import {BreadcrumbComponent} from 'src/app/shared/components/breadcrumb/breadcrumb.component';
 import {MatInputCounterModule} from '@angular-material-extensions/input-counter';
 import {AngularCounterModule} from 'angular-input-counter';
+import {MinSearchSymbolsValidatorDirective} from 'src/app/shared/validators/min-search-symbols-validator.directive';
+import {UppercaseFirstLetterPipe} from 'src/app/shared/pipes/uppercase-first-letter.pipe';
+import {NgxSliderModule} from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,8 @@ import {AngularCounterModule} from 'angular-input-counter';
     DateRangeInputComponent,
     CurrencyPipe,
     BreadcrumbComponent,
+    MinSearchSymbolsValidatorDirective,
+    UppercaseFirstLetterPipe,
   ],
     imports: [
         NgbModule,
@@ -68,6 +73,7 @@ import {AngularCounterModule} from 'angular-input-counter';
         MatTableModule,
         MatInputCounterModule,
         AngularCounterModule,
+        NgxSliderModule,
     ],
   exports: [
     NgbModule,
@@ -97,6 +103,9 @@ import {AngularCounterModule} from 'angular-input-counter';
     BreadcrumbComponent,
     MatInputCounterModule,
     AngularCounterModule,
+    MinSearchSymbolsValidatorDirective,
+    UppercaseFirstLetterPipe,
+    NgxSliderModule,
   ]
 })
 export class SharedModule {

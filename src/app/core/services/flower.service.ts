@@ -21,4 +21,8 @@ export class FlowerService {
   public findByUuid(uuid: string): Observable<FlowerListView> {
     return this.http.get<FlowerListView>(ApiConstants.FLOWERS + '/' + uuid);
   }
+
+  public getAvailableQuantity(uuid: string): Observable<number> {
+    return this.http.get<number>(ApiConstants.FLOWERS + '/' + uuid + '/quantity');
+  }
 }

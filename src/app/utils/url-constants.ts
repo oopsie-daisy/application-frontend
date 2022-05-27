@@ -16,6 +16,8 @@ export class UrlConstants {
   public static readonly SEARCH = 'paieska';
   public static readonly SHOPPING_CART = 'krepselis';
 
+  public static readonly PURCHASE = 'pirkimas';
+
   // how to use: for example, your route is shop/{id}, so you write UrlConstants.buildUrl(UrlConstants.SHOP, model.id),
   // where model is your, let's say, DTO. 'model' is just a name of your variable
   public static buildUrl(...args: string[]): string {

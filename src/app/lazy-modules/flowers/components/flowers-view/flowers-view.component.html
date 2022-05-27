@@ -1,4 +1,4 @@
-<div class="content" *ngIf="model">
+<div class="content" *ngIf="model && availableQuantity">
   <div class="breadcrumb breadcrumb--light clearfix">
     <app-breadcrumb [first]="true"><a [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)" class="breadcrumb__links">Pradžia</a></app-breadcrumb>
     <app-breadcrumb><a [routerLink]="UrlConstants.buildUrl(UrlConstants.FLOWERS)" class="breadcrumb__links">Gėlės</a></app-breadcrumb>
@@ -25,15 +25,15 @@
       <div class="aside__body">
         <form ngForm>
           <mat-input-counter
-            [_value]="quantity"
-            (change)="increaseQuantity($event)"
+            [_value]="selectedQuantity"
+            (change)="changeQuantity($event)"
             [min]="1"
-            [max]="10"
+            [max]="availableQuantity"
             [step]="1"
             [label]="'Kiekis'">
           </mat-input-counter>
-          <h3>Kaina:</h3>
-          <h3 class="group-label">{{quantity}} X {{model.price | currency}} = {{quantity * model.price | currency}}</h3>
+          <h4>Kaina pasirinktam kiekiui:</h4>
+          <h3 class="group-label">{{selectedQuantity}} X {{model.price | currency}} = {{selectedQuantity * model.price | currency}}</h3>
           <div class="aside__body aside__body--bottom">
             <app-button (btnClick)="startOrder()" btnClass="btn btn--primary btn--big w-100">Pradėti užsakymą</app-button>
           </div>

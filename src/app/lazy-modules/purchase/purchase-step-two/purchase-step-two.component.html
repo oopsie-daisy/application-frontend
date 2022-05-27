@@ -1,0 +1,36 @@
+<form #form="ngForm" class="row" appInvalidFormScroll>
+  <h3>Pristatymas</h3>
+  <div class="col-10">
+    <app-form-group class="col-12 pt-1">
+      <mat-label>Pasirinktite vieną iš galimų pristatymo variantų</mat-label>
+      <app-radio-group [(ngModel)]="model.deliveryOption" [required]="true" name="deliveryOption">
+        <mat-radio-button *ngFor="let option of DeliveryOptionEnum | keyvalue" [value]="option.key">
+          <div class="d-inline-flex">
+            <div class="flex-column radio-button-text">
+              <p>{{deliverOptionDescriptions[option.key].title}}</p>
+              <p class="comment">{{deliverOptionDescriptions[option.key].comment}}</p>
+            </div>
+            <div class="ps-5">
+              <span class="text-right">{{deliverOptionDescriptions[option.key].price | currency}}</span>
+            </div>
+          </div>
+        </mat-radio-button>
+      </app-radio-group>
+    </app-form-group>
+    <h3>Pristatymo adresas</h3>
+    <div class="row">
+      <app-form-group class="col-4 pt-1">
+        <mat-label>Miestas</mat-label>
+        <app-select [(ngModel)]="model.city" [required]="true" name="city">
+          <ng-container *ngFor="let option of citiesInOrder">
+            <span *appSelectOption="option">{{citiesTranslations[option]}}</span>
+          </ng-container>
+        </app-select>
+      </app-form-group>
+      <app-form-group class="col-8 pt-1">
+        <mat-label>Adresas</mat-label>
+        <app-text-input [(ngModel)]="model.customerAddress" name="address" [required]="true"></app-text-input>
+      </app-form-group>
+    </div>
+  </div>
+</form>

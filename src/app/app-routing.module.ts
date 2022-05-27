@@ -1,11 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {UrlConstants} from 'src/app/utils/url-constants';
+import {PageNotFoundComponent} from 'src/app/core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: UrlConstants.HOME,
-    loadChildren: () => import('src/app/lazy-modules/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('src/app/lazy-modules/flowers/flowers.module').then(m => m.FlowersModule)
   },
   {
     path: UrlConstants.COMPONENT_EXAMPLES,
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: UrlConstants.HOME, pathMatch: 'full'
+  },
+  {
+    path: '**', component: PageNotFoundComponent
   }
 ];
 

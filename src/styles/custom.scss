@@ -196,3 +196,12 @@
 .radio-button-text {
   width: 350px;
 }
+
+.order-summary {
+  dt {
+    text-align: left;
+  }
+  dd {
+    text-align: right;
+  }
+}

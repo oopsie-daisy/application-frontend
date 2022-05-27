@@ -79,11 +79,17 @@ export class PurchaseProcessComponent implements OnInit {
       }
     }
 
-    this.paymentService.placeOrder(this.model).subscribe(() => this.router.navigateByUrl(UrlConstants.buildUrl(UrlConstants.FLOWERS)));
+    this.paymentService.placeOrder(this.model).subscribe(() => {
+      this.submitPressed = true;
+    });
   }
 
-  changeQuantity(num: number): void {
-    this.model.quantity = num;
+  changeQuantity(quantity: number): void {
+    this.model.quantity = quantity;
+  }
+
+  returnToFlowerList(): void {
+    this.router.navigateByUrl(UrlConstants.buildUrl(UrlConstants.FLOWERS))
   }
 
 }

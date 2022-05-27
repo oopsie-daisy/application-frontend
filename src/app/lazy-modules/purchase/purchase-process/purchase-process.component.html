@@ -9,7 +9,7 @@
   <div class="purchase_process_view">
     <div>
       <div class="d-flex justify-content-between">
-        <h1>Užsakymo informacija</h1>
+        <h1 *ngIf="!submitPressed">Užsakymo informacija</h1>
       </div>
       <div class="block block--tight" *ngIf="!submitPressed">
         <mat-stepper #stepper class="app-stepper application-stepper block-nm-t block-nm-x">
@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-      <div class="aside">
+      <div class="aside" *ngIf="!submitPressed">
         <h3 class="p-3">Užsakymas</h3>
         <div class="aside__body">
           <div class="row">
@@ -88,6 +88,40 @@
               <h3>{{model.quantity * selectedFlower.price + deliverOptionDescriptions[model.deliveryOption].price | currency}}</h3>
             </dd>
           </dl>
+        </div>
+      </div>
+      <div class="block m-auto col-8" *ngIf="submitPressed">
+        <h1 class="text-center">Jūsų užsakymas pateiktas!</h1>
+        <p class="text-center">Patvirtinimo laišką gausite nurodytu el. pašto adresu</p>
+        <h3>Užsakymo santrauka</h3>
+        <div class="order-summary">
+          <dl class="row">
+            <dt class="col-6">Užsakyta gėlė(-ės):</dt>
+            <dd class="col-6">{{selectedFlower.title}} X 1 vnt.</dd>
+          </dl>
+          <dl class="row">
+            <dt class="col-6">Užsakymo suma:</dt>
+            <dd class="col-6">{{model.amountToPay | currency}}</dd>
+          </dl>
+          <hr class="my-2">
+          <dl class="row">
+            <dt class="col-6">Nurodytas el. pašto adresas:</dt>
+            <dd class="col-6">{{model.customerEmail}}</dd>
+          </dl>
+          <dl class="row">
+            <dt class="col-6">Pasirinktas pristatymo būdas:</dt>
+            <dd class="col-6">{{deliverOptionDescriptions[model.deliveryOption].title}}</dd>
+          </dl>
+          <dl class="row">
+            <dt class="col-6">Nurodytas adresas:</dt>
+            <dd class="col-6">{{model.customerAddress}}</dd>
+          </dl>
+        </div>
+        <hr class="block-nm-x mt-3"/>
+        <div class="d-flex justify-content-between pt-4">
+          <div>
+            <app-button (btnClick)="returnToFlowerList()" btnClass="btn btn--secondary me-3">Grįžti į gėlių sąrašą</app-button>
+          </div>
         </div>
       </div>
     </div>

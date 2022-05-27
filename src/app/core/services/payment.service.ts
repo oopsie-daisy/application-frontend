@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {CitiesEnumUtils} from 'src/app/model/enum/cities-enum';
 import {ApiConstants} from 'src/app/utils/api-constants';
 import {DeliveryOptionEnumUtils} from 'src/app/model/enum/delivery-option-enum';
+import {AppHttpParams} from 'src/app/model/common/app-http-params';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class PaymentService {
   public placeOrder(model: PurchaseView): Observable<void> {
     this.correctPurchaseData(model);
 
-    return this.http.post<void>(ApiConstants.PAYMENTS + '/complete', model);
+    const params = new AppHttpParams({})
+    return this.http.post<void>(ApiConstants.PAYMENTS + '/complete', model, {params});
   }
 
   private correctPurchaseData(model: PurchaseView): void {

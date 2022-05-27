@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UrlConstants} from 'src/app/utils/url-constants';
 import {ApiConstants} from 'src/app/utils/api-constants';
-import {FlowerListView} from 'src/app/model/view/flower-list-view';
+import {FlowerView} from 'src/app/model/view/flower-view';
 import {FlowerService} from 'src/app/core/services/flower.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FlowerColorEnumUtils} from 'src/app/model/enum/flower-color-enum';
@@ -17,7 +17,7 @@ export class FlowersViewComponent implements OnInit {
   ApiConstants = ApiConstants;
   ColorNames = FlowerColorEnumUtils.getTranslatedNames();
 
-  model: FlowerListView;
+  model: FlowerView;
 
   coverImage: string;
   selectedQuantity = 1;

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FlowerService} from 'src/app/core/services/flower.service';
 import {FlowerFilter} from 'src/app/model/search/flower-filter';
-import {FlowerListView} from 'src/app/model/view/flower-list-view';
+import {FlowerView} from 'src/app/model/view/flower-view';
 import {UrlConstants} from 'src/app/utils/url-constants';
 import {FlowerColorEnum, FlowerColorEnumUtils} from 'src/app/model/enum/flower-color-enum';
 
@@ -17,7 +17,7 @@ export class FlowersListComponent implements OnInit {
   ColorNames = FlowerColorEnumUtils.getTranslatedNames();
 
   flowerFilter = new FlowerFilter();
-  list: FlowerListView[];
+  list: FlowerView[];
 
   constructor(private flowerService: FlowerService) {
   }

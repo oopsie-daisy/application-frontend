@@ -8,13 +8,15 @@ import {FaUtils} from "src/app/utils/fa-utils";
 import {HeaderComponent} from 'src/app/core/components/header/header.component';
 import {FooterComponent} from 'src/app/core/components/footer/footer.component';
 import {LoadingSpinnerComponent} from 'src/app/core/components/loading-spinner/loading-spinner.component';
+import {PageNotFoundComponent} from 'src/app/core/components/page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     SharedModule,

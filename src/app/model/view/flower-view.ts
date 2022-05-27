@@ -1,6 +1,6 @@
 import {FlowerColorEnum} from 'src/app/model/enum/flower-color-enum';
 
-export class FlowerListView {
+export class FlowerView {
   uuid: string;
   title: string;
   bouquet: boolean;

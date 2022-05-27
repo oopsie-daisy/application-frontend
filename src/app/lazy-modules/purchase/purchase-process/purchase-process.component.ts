@@ -4,7 +4,7 @@ import {UrlConstants} from 'src/app/utils/url-constants';
 import {ScrollUtils} from 'src/app/utils/scroll-utils';
 import {MatStepper} from '@angular/material/stepper';
 import {StepFormComponent} from 'src/app/model/common/step-form-component';
-import {FlowerListView} from 'src/app/model/view/flower-list-view';
+import {FlowerView} from 'src/app/model/view/flower-view';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FlowerService} from 'src/app/core/services/flower.service';
 import {FlowerColorEnumUtils} from 'src/app/model/enum/flower-color-enum';
@@ -34,7 +34,7 @@ export class PurchaseProcessComponent implements OnInit {
   stepLabels = ['Kontaktai', 'Pristatymas', 'Apmokėjimas'];
 
   model = new PurchaseView();
-  selectedFlower: FlowerListView;
+  selectedFlower: FlowerView;
 
   availableQuantity: number;
   submitPressed = false;

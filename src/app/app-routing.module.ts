@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('src/app/lazy-modules/flowers/flowers.module').then(m => m.FlowersModule)
   },
   {
+    path: UrlConstants.PURCHASE,
+    loadChildren: () => import('src/app/lazy-modules/purchase/purchase.module').then(m => m.PurchaseModule)
+  },
+  {
     path: '', redirectTo: UrlConstants.HOME, pathMatch: 'full'
   }
 ];

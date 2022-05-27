@@ -1,0 +1,13 @@
+<form #form="ngForm" class="row" appInvalidFormScroll>
+  <h3>Mokėjimo būdas</h3>
+  <div class="col-8">
+    <app-form-group class="col-12 pt-1">
+      <mat-label>Pasirinktite vieną iš mokėjimo būdų</mat-label>
+      <app-radio-group [(ngModel)]="model.paymentProvider" [required]="true" name="paymentProvider">
+        <mat-radio-button *ngFor="let option of PaymentProvidersEnum | keyvalue" [value]="option.key">
+          {{paymentProvidersInfo[option.key].name}}
+        </mat-radio-button>
+      </app-radio-group>
+    </app-form-group>
+  </div>
+</form>

@@ -15,6 +15,9 @@ export class AppConstants {
   // Misc
   public static readonly CURRENCY_EUR_SIGN = '€';
 
+  // Temporary constant sender IBAN value
+  public static readonly SENDER_IBAN = 'LT123456789';
+
   public static compareById(o1: any, o2: any): boolean {
     return o1?.id === o2?.id;
   }

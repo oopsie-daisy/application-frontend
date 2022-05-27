@@ -262,3 +262,98 @@ app-select + .mat-form-field-label-wrapper {
 .mat-select-trigger .mat-select-value-text {
   white-space: normal;
 }
+
+// Stepper styles ------------------------------------------------------------------------------------------------------------------------------------------------------------
+mat-stepper.app-stepper {
+  .mat-horizontal-stepper-header-container {
+    border-bottom: 2px solid rgba($color: $deco-color, $alpha: .1);
+    padding: 0 22px;
+    margin-bottom: 26px;
+    pointer-events: none;
+    align-items: start;
+
+    .mat-stepper-horizontal-line {
+      display: none;
+    }
+
+    mat-step-header {
+      flex: 1 0 0;
+      flex-direction: column;
+      padding: 12px 5px 12px 5px;
+      height: unset;
+
+      &:not(:first-of-type):not(:last-of-type)[tabindex="0"]:before {
+        background: linear-gradient(90deg, $deco-color 50%, $gallery 50%);
+      }
+
+      &[tabindex="0"] ~ mat-step-header:before, &:first-of-type[tabindex="0"]:before {
+        background: $gallery;
+      }
+
+      &:first-of-type:before {
+        width: 50%;
+        left: 50%
+      }
+
+      &:last-of-type:before {
+        width: 50%;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        top: 32px;
+        height: 2px;
+        left: 0;
+        background: $deco-color;
+      }
+
+      .mat-step-icon {
+        height: 40px;
+        width: 40px;
+        font: 14px/1.2 $primary-font;
+        box-shadow: 0 6px 12px rgba(58, 90, 169, .1);
+        background-color: $deco-color;
+        color: $white;
+      }
+
+      .mat-step-label {
+        font: 12px/1.2 $primary-font;
+        line-height: 1.4;
+        padding-top: 6px;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .mat-step-header-ripple {
+        display: none;
+      }
+    }
+
+    mat-step-header[aria-selected="true"] ~ mat-step-header .mat-step-icon {
+      background-color: $white;
+      color: $text-color;
+    }
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0 32px;
+  }
+
+  @media (max-width: $mobile-max) {
+    mat-step-header {
+      justify-content: center;
+
+      .mat-step-label {
+        display: none;
+      }
+    }
+  }
+}
+
+//mat-stepper.application-stepper {
+//  .mat-horizontal-stepper-content:last-of-type {
+//    margin: 0 -32px;
+//  }
+//}

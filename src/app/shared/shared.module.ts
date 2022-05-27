@@ -34,6 +34,8 @@ import {AngularCounterModule} from 'angular-input-counter';
 import {MinSearchSymbolsValidatorDirective} from 'src/app/shared/validators/min-search-symbols-validator.directive';
 import {UppercaseFirstLetterPipe} from 'src/app/shared/pipes/uppercase-first-letter.pipe';
 import {NgxSliderModule} from '@angular-slider/ngx-slider';
+import {MatStepperModule} from '@angular/material/stepper';
+import {EmailValidatorDirective} from 'src/app/shared/validators/email-validator.directive';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
     BreadcrumbComponent,
     MinSearchSymbolsValidatorDirective,
     UppercaseFirstLetterPipe,
+    EmailValidatorDirective,
   ],
     imports: [
         NgbModule,
@@ -74,6 +77,7 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
         MatInputCounterModule,
         AngularCounterModule,
         NgxSliderModule,
+        MatStepperModule,
     ],
   exports: [
     NgbModule,
@@ -106,6 +110,8 @@ import {NgxSliderModule} from '@angular-slider/ngx-slider';
     MinSearchSymbolsValidatorDirective,
     UppercaseFirstLetterPipe,
     NgxSliderModule,
+    MatStepperModule,
+    EmailValidatorDirective,
   ]
 })
 export class SharedModule {

@@ -1,0 +1,13 @@
+<form #form="ngForm" class="row" appInvalidFormScroll>
+  <h3>Įveskite savo duomenis</h3>
+  <div class="col-md-6">
+    <app-form-group class="col-12 pt-1">
+      <mat-label>Vardas, pavardė</mat-label>
+      <app-text-input [(ngModel)]="model.customerName" name="customerName" [required]="true"></app-text-input>
+    </app-form-group>
+    <app-form-group class="col-12 pt-1">
+      <mat-label>Elektroninis paštas</mat-label>
+      <app-text-input [(ngModel)]="model.customerEmail" appEmailValidator name="customerEmail" [required]="true"></app-text-input>
+    </app-form-group>
+  </div>
+</form>

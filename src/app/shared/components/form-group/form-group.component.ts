@@ -87,6 +87,9 @@ export class FormGroupComponent implements AfterContentInit, OnDestroy {
         return;
       }
       this.errorKey = Object.keys(this.primaryControl.ngControl.errors)[0];
+      if (this.errorKey === 'required') {
+        this.errorKey = 'Reikšmė privalo būti įvesta'
+      }
       this.error.next(this.errorKey);
     }
   }

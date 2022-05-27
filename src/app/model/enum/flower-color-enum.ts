@@ -4,6 +4,7 @@ export enum FlowerColorEnum {
   PINK = 'PINK',
   ORANGE = 'ORANGE',
   WHITE = 'WHITE',
+  BLUE = 'BLUE',
 }
 
 export class FlowerColorEnumUtils {
@@ -14,6 +15,7 @@ export class FlowerColorEnumUtils {
       'PINK': ['rožinė'],
       'ORANGE': ['oranžinė'],
       'WHITE': ['balta'],
+      'BLUE': ['mėlyna'],
     }
   }
 }

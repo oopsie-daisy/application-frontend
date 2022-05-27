@@ -3,7 +3,7 @@ import {UrlConstants} from 'src/app/utils/url-constants';
 import {ApiConstants} from 'src/app/utils/api-constants';
 import {FlowerListView} from 'src/app/model/view/flower-list-view';
 import {FlowerService} from 'src/app/core/services/flower.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FlowerColorEnumUtils} from 'src/app/model/enum/flower-color-enum';
 
 @Component({
@@ -20,10 +20,12 @@ export class FlowersViewComponent implements OnInit {
   model: FlowerListView;
 
   coverImage: string;
-  quantity = 1;
+  selectedQuantity = 1;
+  availableQuantity: number;
 
   constructor(private flowerService: FlowerService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -31,15 +33,19 @@ export class FlowersViewComponent implements OnInit {
       this.model = view;
       let base64Data = this.model.image;
       this.coverImage = 'data:image/jpeg;base64,' + base64Data;
+
+      this.flowerService.getAvailableQuantity(this.model.uuid).subscribe(value => {
+        this.availableQuantity = value
+      });
     });
   }
 
   startOrder(): void {
-  //  functionality will be added later
+    this.router.navigate([UrlConstants.buildUrl(UrlConstants.PURCHASE)], {queryParams: {flowerUuid: this.model.uuid }})
   }
 
-  increaseQuantity(num: number): void {
-    this.quantity = num;
+  changeQuantity(num: number): void {
+    this.selectedQuantity = num;
   }
 
 }

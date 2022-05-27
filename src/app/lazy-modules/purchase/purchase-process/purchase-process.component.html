@@ -1,0 +1,95 @@
+<div class="content" *ngIf="selectedFlower && availableQuantity">
+  <div class="breadcrumb clearfix">
+    <app-breadcrumb [first]="true"><a [routerLink]="UrlConstants.buildUrl(UrlConstants.HOME)" class="breadcrumb__links">Pradžia</a></app-breadcrumb>
+    <app-breadcrumb><a [routerLink]="UrlConstants.buildUrl(UrlConstants.FLOWERS)" class="breadcrumb__links">Gėlės</a></app-breadcrumb>
+    <app-breadcrumb><a [routerLink]="UrlConstants.buildUrl(UrlConstants.FLOWERS, selectedFlower.uuid)" class="breadcrumb__links">{{selectedFlower.title}}</a></app-breadcrumb>
+    <app-breadcrumb>Užsakymas</app-breadcrumb>
+  </div>
+
+  <div class="purchase_process_view">
+    <div>
+      <div class="d-flex justify-content-between">
+        <h1>Užsakymo informacija</h1>
+      </div>
+      <div class="block block--tight" *ngIf="!submitPressed">
+        <mat-stepper #stepper class="app-stepper application-stepper block-nm-t block-nm-x">
+          <mat-step [completed]="stepper.selectedIndex > 0">
+            <ng-template matStepLabel>{{stepLabels[0]}}</ng-template>
+            <ng-template matStepContent><app-purchase-step-one #step1 [model]="model" [stepIndex]="0"></app-purchase-step-one></ng-template>
+          </mat-step>
+          <mat-step [completed]="stepper.selectedIndex > 1">
+            <ng-template matStepLabel>{{stepLabels[1]}}</ng-template>
+            <ng-template matStepContent><app-purchase-step-two #step2 [model]="model" [stepIndex]="1"></app-purchase-step-two></ng-template>
+          </mat-step>
+          <mat-step [completed]="stepper.selectedIndex > 2">
+            <ng-template matStepLabel>{{stepLabels[2]}}</ng-template>
+            <ng-template matStepContent><app-purchase-step-three #step3 [model]="model" [stepIndex]="2"></app-purchase-step-three></ng-template>
+          </mat-step>
+          <ng-template matStepperIcon="edit">
+            <fa-icon [icon]="['fas', 'check']" size="lg"></fa-icon>
+          </ng-template>
+        </mat-stepper>
+        <hr class="block-nm-x mt-3"/>
+        <div class="d-flex justify-content-between pt-4 btn-group-mobile">
+          <div class="reverse-mobile">
+            <app-button *ngIf="stepper.selectedIndex !== 0" (btnClick)="previousStep()" btnClass="btn btn--secondary me-3">Atgal</app-button>
+            <app-button *ngIf="stepper.selectedIndex !== lastStepNumber" (btnClick)="nextStep()" btnClass="btn btn--primary">Toliau</app-button>
+            <app-button *ngIf="stepper.selectedIndex === lastStepNumber" (btnClick)="submitPurchase()" btnClass="btn btn--primary">Apmokėti ir pateikti užsakymą</app-button>
+          </div>
+        </div>
+      </div>
+      <div class="aside">
+        <h3 class="p-3">Užsakymas</h3>
+        <div class="aside__body">
+          <div class="row">
+            <div class="col-6">
+              <p class="fw-bold">{{selectedFlower.title}}</p>
+              <p>Spalva: {{colorNames[selectedFlower.baseColor]}}</p>
+              <p>Puokštė: {{selectedFlower.bouquet ? "taip" : "ne"}}</p>
+            </div>
+            <div class="col-6">
+              <img [src]="selectedFlower.image" [alt]="'Paveikslėlis nerastas'">
+            </div>
+          </div>
+        </div>
+        <div class="aside__body">
+          <form ngForm>
+            <mat-input-counter
+              [_value]="model.quantity"
+              (change)="changeQuantity($event)"
+              [min]="1"
+              [max]="availableQuantity"
+              [step]="1"
+              [label]="'Kiekis'">
+            </mat-input-counter>
+          </form>
+        </div>
+        <div class="aside__body">
+          <dl class="row">
+            <dt class="col-6">Gėlių kaina:</dt>
+            <dd class="col-6 text-right">{{model.quantity}} X {{selectedFlower.price | currency}} = {{model.quantity * selectedFlower.price | currency}}</dd>
+          </dl>
+        </div>
+        <div *ngIf="model.deliveryOption" class="aside__body">
+          <dl class="row">
+            <dt class="col-6">Pristatymas:</dt>
+            <dd class="col-6 text-right">{{deliverOptionDescriptions[model.deliveryOption].price | currency}}</dd>
+          </dl>
+        </div>
+        <div class="aside__body">
+          <dl class="row">
+            <dt class="col-6">
+              <h3>Viso:</h3>
+            </dt>
+            <dd *ngIf="!model.deliveryOption" class="col-6 text-right">
+              <h3>{{model.quantity * selectedFlower.price | currency}}</h3>
+            </dd>
+            <dd *ngIf="model.deliveryOption" class="col-6 text-right">
+              <h3>{{model.quantity * selectedFlower.price + deliverOptionDescriptions[model.deliveryOption].price | currency}}</h3>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

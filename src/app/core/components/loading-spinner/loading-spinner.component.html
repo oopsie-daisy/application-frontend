@@ -1,0 +1,8 @@
+<div class="spinner-background" [class.active]="loadingService.showSpinner$ | async">
+  <div class="lds-ring" *ngIf="loadingService.showSpinner$ | async">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

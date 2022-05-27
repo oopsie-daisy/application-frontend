@@ -7,12 +7,14 @@ import {FontAwesomeModule, FaIconLibrary} from "@fortawesome/angular-fontawesome
 import {FaUtils} from "src/app/utils/fa-utils";
 import {HeaderComponent} from 'src/app/core/components/header/header.component';
 import {FooterComponent} from 'src/app/core/components/footer/footer.component';
+import {LoadingSpinnerComponent} from 'src/app/core/components/loading-spinner/loading-spinner.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     SharedModule,
@@ -22,7 +24,8 @@ import {FooterComponent} from 'src/app/core/components/footer/footer.component';
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingSpinnerComponent
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'lt'},
